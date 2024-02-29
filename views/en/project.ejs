@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= project.title%></title>
+</head>
+<body>
+<h1><%= project.title%></h1>
+<br>
+<div class="project-card">
+    <div class="project-content">
+        <% project.img.forEach(imageUrl => { %>
+            <img style="  display: inline;
+  max-width:200px;
+  max-height: 200px;
+  width: auto;
+  height: auto;" src="/uploads/<%= imageUrl %>" alt="Project Image">
+        <% }) %>
+        <h2><%= project.title %></h2>
+        <p><%= project.description %></p>
+    </div>
+</div>
+</body>
+</html>
