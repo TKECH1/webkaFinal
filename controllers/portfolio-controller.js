@@ -2,16 +2,18 @@ import PortfolioService from "../services/portfolioService.js";
 import upload from "../utils/image-uploader.js";
 import multer from "multer";
 import * as dotenv from "dotenv";
+import UserService from "../services/user-service.js";
 
 const projectRepository = new PortfolioService()
+const userService = new UserService()
 dotenv.config({path: `.env.${process.env.NODE_ENV}`})
 
 export default class PortfolioController {
 
     getAllProjects = async (req, res) => {
+        const {email} = await userService.findById(req.session.userId)
         try {
             const allProjects = await projectRepository.findAll();
-
             const requestOptions = {
                 method: "GET",
                 redirect: "follow"
@@ -42,7 +44,12 @@ export default class PortfolioController {
                     console.error('There was a problem with your fetch operation:', error);
                 });
 
-            res.render('en/index.ejs', {projects: allProjects, exchangeRate: exchangeRateResponse, boredApi: boredResponse}); // Assuming EJS template named 'projects.ejs'
+            res.render('en/index.ejs', {
+                projects: allProjects,
+                exchangeRate: exchangeRateResponse,
+                boredApi: boredResponse,
+                userEmail: email
+            }); // Assuming EJS template named 'projects.ejs'
         } catch (error) {
             console.error(error);
             res.status(500).send('Error fetching projects');

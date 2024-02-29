@@ -2,33 +2,50 @@
 <html lang="en">
 <head>
     <title>All Projects</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 </head>
 <body>
-<h1>Projects</h1>
-<div class="project-card">
-    <% projects.forEach(project => { %>
-        <hr>
-        <div class="project-content">
-            <% project.img.forEach(imageUrl => { %>
-                <img style="  display: inline;
+
+<header>
+    <div class="api-content">
+        <div id="exchange-rate-USD"><p>USD: <%= exchangeRate.conversion_rates.KZT %></p></div>
+        <div id="exchange-rate-USD"><p>Activity: <%= boredApi.activity %></p></div>
+    </div>
+    <h1 id="header-title">Projects</h1>
+    <p><%= userEmail %></p>
+
+</header>
+<% projects.forEach(project => { %>
+    <a href="/project/<%= project.id %>">
+        <div class="project-card">
+            <div class="project-content">
+                <div class="right-side">
+                    <img class="project-image" style="  display: inline;
   max-width:200px;
   max-height: 200px;
   width: auto;
-  height: auto;" src="/uploads/<%= imageUrl %>" alt="Project Image">
-            <% }) %>
-            <p><%= project.id %></p>
-            <h2><%= project.title %></h2>
-            <p><%= project.description %></p>
-            <div class="update-button"><a href="/update/project/<%= project.id %>">update</a></div>
-            <form action="/delete/project/<%= project.id %>?_method=delete" method="post">
-                <input type="hidden" name="_method" value="DELETE">
-                <button type="submit">DELETE</button>
-            </form>
+  height: auto;" src="/uploads/<%= project.img[0] %>" alt="Project Image">
+                </div>
+                <div class="left-side">
+                    <h2 class="project-title"><%= project.title %></h2>
+                    <p class="project-description"><%= project.description %></p>
+                </div>
+            </div>
+            <div class="admin-actions">
+                <div id="update-button"><a href="/update/project/<%= project.id %>">UPDATE</a></div>
+                <form action="/delete/project/<%= project.id %>?_method=delete" method="post">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button id="delete-button" type="submit">DELETE</button>
+                </form>
+            </div>
         </div>
-    <% }) %>
+    </a>
+<% }) %>
 
-</div>
-<div class="exchange-rate-USD"><p>USD: <%= exchangeRate.conversion_rates.KZT %></p></div>
-<div class="exchange-rate-USD"><p>Activity: <%= boredApi.activity %></p></div>
+<footer>
+    <p>Talgat Mukhtarov SE-2226</p>
+</footer>
+
 </body>
 </html>
