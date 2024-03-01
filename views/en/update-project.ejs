@@ -6,37 +6,38 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Update "<%= project.title %>"</title>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="/css/create.css">
 </head>
 <body>
+<div class="form-container">
+    <h1>Update project</h1>
 
+    <form action="/update/project/<%= project.id %>?_method=put" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_method" value="PUT">
 
-
-<form action="/update/project/<%= project.id %>?_method=put" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="_method" value="PUT">
-
-<% project.img.forEach(imageUrl => { %>
-        <img style="  display: inline;
+        <% project.img.forEach(imageUrl => { %>
+            <img class="ex-img" style="  display: inline;
   max-width:200px;
   max-height: 200px;
   width: auto;
   height: auto;" src="/uploads/<%= imageUrl %>" alt="Project Image">
-    <% }) %>
-    <div>
-        <label for="img">Images:</label>
-        <input type="file" id="img" name="img" multiple accept="image/*">
-    </div>
+        <% }) %>
+        <div class="input-class">
+            <input type="file" id="img" name="img" multiple accept="image/*">
+        </div>
 
-    <div>
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" value="<%= project.title%>" required>
-    </div>
+        <div class="input-class">
+            <input type="text" id="title" placeholder="title" name="title" value="<%= project.title%>" required>
+        </div>
 
-    <div>
-        <label for="description">Description:</label>
-        <textarea id="description" name="description"  required><%= project.description%></textarea>
-    </div>
+        <div class="input-class">
+            <textarea id="description" name="description" placeholder="description" required><%= project.description%></textarea>
+        </div>
 
-    <button type="submit">update Project</button>
-</form>
+        <button type="submit">Update Project</button>
+    </form>
+</div>
+
 </body>
 </html>

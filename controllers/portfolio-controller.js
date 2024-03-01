@@ -60,7 +60,6 @@ export default class PortfolioController {
 
         try {
             const project = await projectRepository.findById(req.params.id)
-            console.log(req.session.lang)
 
             const url = "https://translate.api.cloud.yandex.net/translate/v2/translate"
             let translation

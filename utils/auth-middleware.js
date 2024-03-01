@@ -21,7 +21,7 @@ export const requireAdmin = async (req, res, next) => {
                 res.redirect('/');
             }
         } else {
-            res.redirect('/login');
+            res.redirect('/');
         }
     } catch (error) {
         console.error(error);

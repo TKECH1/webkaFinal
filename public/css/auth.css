@@ -33,3 +33,7 @@ body {
     padding: 7px 30px;
     font-size: 110%;
 }
+
+p {
+    padding: 20px 0;
+}

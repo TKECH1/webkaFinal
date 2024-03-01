@@ -3,20 +3,31 @@
 <head>
     <title><%= project.title%></title>
 </head>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+<link rel="stylesheet" href="/css/project.css">
 <body>
-<h1><%= project.title%></h1>
 <br>
 <div class="project-card">
     <div class="project-content">
-        <% project.img.forEach(imageUrl => { %>
-            <img style="  display: inline;
-  max-width:200px;
-  max-height: 200px;
-  width: auto;
-  height: auto;" src="/uploads/<%= imageUrl %>" alt="Project Image">
-        <% }) %>
-        <h2><%= project.title %></h2>
-        <p><%= project.description %></p>
+        <div class="up-content">
+            <h1><%= project.title%></h1>
+            <div class="project-img">
+                <% project.img.forEach(imageUrl => { %>
+                    <img style="    display: inline;
+    border-radius: 10px;
+    max-width:300px;
+    max-height: 300px;
+    width: auto;
+    height: auto;" src="/uploads/<%= imageUrl %>" alt="Project Image">
+                <% }) %>
+            </div>
+
+        </div>
+        <div class="down-content">
+            <h2><%= project.title %></h2>
+            <p><%= project.description %></p>
+        </div>
+
     </div>
 </div>
 </body>

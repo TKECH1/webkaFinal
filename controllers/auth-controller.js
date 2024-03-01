@@ -59,8 +59,6 @@ export default class AuthController {
     login = async (req, res) => {
         const {email, password} = req.body;
 
-        console.log(email, password)
-
         console.log("session: " + req.session)
 
         try {

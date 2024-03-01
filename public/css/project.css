@@ -1,0 +1,46 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Montserrat';
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.project-card {
+    margin: 20px auto;  /* Center by setting auto margins */
+    padding: 40px 70px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 60%;         /* Limit card width to 50% */
+}
+
+.project-content {
+}
+
+.project-content h1 {
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+.project-img {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.down-content {
+    padding-left: 8%;
+    padding-top: 5%;
+}
+
+.down-content p {
+    padding-top: 1%;
+}

@@ -12,16 +12,15 @@
         <div id="exchange-rate-USD"><p>USD: <%= exchangeRate.conversion_rates.KZT %></p></div>
         <div id="exchange-rate-USD"><p>Activity: <%= boredApi.activity %></p></div>
     </div>
-    <h1 id="header-title">Projects</h1>
+    <h1 id="header-title">Portfolio</h1>
     <p><%= userEmail %></p>
-    <form action="/changeLanguage" method="post" id="lang-form-container">
-        <select name="lang" id="lang-select">
-            <option value="en">en</option>
-            <option value="ru">ru</option>
-        </select>
-    </form>
-
 </header>
+<form action="/changeLanguage" method="post" id="lang-form-container">
+    <select name="lang" id="lang-select">
+        <option value="en">en</option>
+        <option value="ru">ru</option>
+    </select>
+</form>
 <% projects.forEach(project => { %>
     <a href="/project/<%= project.id %>">
         <div class="project-card">
