@@ -15,13 +15,12 @@ connectToMongo()
 
 const app = express()
 
-
 const PORT = process.env.APPLICATION_PORT
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const oneDay = 1000 * 60 * 60 * 24;
 app.use(session({
-    secret: "t4jgat_secret",
+    secret: "alikhan",
     resave: false,
     saveUninitialized: false,
     cookie: { maxAge: oneDay },
@@ -35,7 +34,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'))
 
 app.use(methodOverride("_method"))
-app.use(express.urlencoded({extended: true})) // parse urlencoded request bodies
+app.use(express.urlencoded({extended: true})) 
 
 app.use(express.json())
 app.use(express.urlencoded( {extended: true} ))

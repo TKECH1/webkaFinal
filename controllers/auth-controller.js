@@ -1,6 +1,8 @@
 import bcrypt from "bcrypt";
 import UserService from "../services/user-service.js";
 import {sendMail} from "../utils/email-sender-service.js";
+import fetch from 'node-fetch';
+
 
 const userService = new UserService()
 
@@ -29,7 +31,7 @@ export default class AuthController {
             });
 
             const mailOptions = {
-                from: 'tmtmtm1423@gmail.com',
+                from: 'mr.sayatalikhan@gmail.com',
                 to: email,
                 subject: "Registration successful",
                 template: 'register-email',

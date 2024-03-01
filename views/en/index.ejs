@@ -12,25 +12,16 @@
         <div id="exchange-rate-USD"><p>USD: <%= exchangeRate.conversion_rates.KZT %></p></div>
         <div id="exchange-rate-USD"><p>Activity: <%= boredApi.activity %></p></div>
     </div>
-    <h1 id="header-title">Portfolio</h1>
+    <h1 id="header-title">Alikhan's Portfolio</h1>
     <p><%= userEmail %></p>
 </header>
-<form action="/changeLanguage" method="post" id="lang-form-container">
-    <select name="lang" id="lang-select">
-        <option value="en">en</option>
-        <option value="ru">ru</option>
-    </select>
-</form>
+
 <% projects.forEach(project => { %>
     <a href="/project/<%= project.id %>">
         <div class="project-card">
             <div class="project-content">
                 <div class="right-side">
-                    <img class="project-image" style="  display: inline;
-  max-width:200px;
-  max-height: 200px;
-  width: auto;
-  height: auto;" src="/uploads/<%= project.img[0] %>" alt="Project Image">
+                    <img class="project-image" src="/uploads/<%= project.img[0] %>" alt="Project Image" style="display: inline; max-width:200px; max-height: 200px; width: auto; height: auto;">
                 </div>
                 <div class="left-side">
                     <h2 class="project-title"><%= project.title %></h2>
@@ -47,9 +38,10 @@
         </div>
     </a>
 <% }) %>
+<a href="/create" class="create-blog-button">Create Blog</a>
 
 <footer>
-    <p>Talgat Mukhtarov SE-2226</p>
+    <p>Sayat Alikhan SE-2226</p>
 </footer>
 
 <script src="/js/index.js"></script>

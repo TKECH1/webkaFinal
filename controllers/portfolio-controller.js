@@ -3,6 +3,8 @@ import upload from "../utils/image-uploader.js";
 import multer from "multer";
 import * as dotenv from "dotenv";
 import UserService from "../services/user-service.js";
+import fetch from 'node-fetch';
+
 
 const projectRepository = new PortfolioService()
 const userService = new UserService()
