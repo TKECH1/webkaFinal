@@ -8,6 +8,8 @@ const router = new Router()
 router.get("/", requireAuth, await portfolioController.getAllProjects)
 router.get("/project/:id", requireAuth, await portfolioController.getProjectById)
 
+router.post("/changeLanguage", requireAuth, await portfolioController.changeLanguage)
+
 router.get("/create", requireAdmin, requireAuth, await portfolioController.projectCreationPage)
 router.post("/create", requireAdmin, requireAuth, await portfolioController.createProject)
 

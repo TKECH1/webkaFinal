@@ -78,6 +78,7 @@ export default class AuthController {
 
             // 3. Initiate session
             req.session.userId = user._id;
+            req.session.lang = "en"
 
             res.redirect("/")
         } catch (error) {

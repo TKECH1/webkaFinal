@@ -57,12 +57,50 @@ export default class PortfolioController {
     }
 
     getProjectById = async (req, res) => {
+
         try {
             const project = await projectRepository.findById(req.params.id)
+            console.log(req.session.lang)
+
+            const url = "https://translate.api.cloud.yandex.net/translate/v2/translate"
+            let translation
+            if (req.session.lang === "ru") {
+                translation = await fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Authorization": `Bearer ${process.env.YANDEX_TRANSLATE_API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        folderId: process.env.YANDEX_FOLDER_ID,
+                        texts: [project.title, project.description],
+                        targetLanguageCode: "ru"
+                    })
+                }).then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                    .catch(error => {
+                        console.error('There was a problem with your fetch operation:', error);
+                    });
+
+                console.log(translation)
+                project.title = translation.translations[0].text
+                project.description = translation.translations[1].text
+            }
+
+
             res.render("en/project.ejs", {project})
         } catch (err) {
+            console.log(err)
             res.status(500).send('Error fetching projects ' + err.message);
         }
+    }
+
+    changeLanguage = async (req, res) => {
+        req.session.lang = req.body.lang
+        res.redirect("/")
     }
 
     projectCreationPage = async (req, res) => {
